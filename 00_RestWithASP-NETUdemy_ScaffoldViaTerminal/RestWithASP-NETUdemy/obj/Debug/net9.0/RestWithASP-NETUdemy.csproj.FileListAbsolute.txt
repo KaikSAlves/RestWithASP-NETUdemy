@@ -97,3 +97,8 @@ C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaT
 C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\obj\Debug\net9.0\RestWithASP-NETUdemy.pdb
 C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\obj\Debug\net9.0\RestWithASP-NETUdemy.genruntimeconfig.cache
 C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\obj\Debug\net9.0\ref\RestWithASP-NETUdemy.dll
+C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\MySqlConnector.dll
+C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\Pomelo.EntityFrameworkCore.MySql.dll

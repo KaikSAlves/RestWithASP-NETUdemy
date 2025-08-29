@@ -103,3 +103,14 @@ C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaT
 C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\MySqlConnector.dll
 C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\Pomelo.EntityFrameworkCore.MySql.dll
 C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\Microsoft.AspNetCore.Mvc.Versioning.dll
+C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\Evolve.dll
+C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\Serilog.dll
+C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\Serilog.AspNetCore.dll
+C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\Serilog.Extensions.Hosting.dll
+C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\Serilog.Extensions.Logging.dll
+C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\Serilog.Formatting.Compact.dll
+C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\Serilog.Settings.Configuration.dll
+C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\Serilog.Sinks.Console.dll
+C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\Serilog.Sinks.Debug.dll
+C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\Serilog.Sinks.File.dll

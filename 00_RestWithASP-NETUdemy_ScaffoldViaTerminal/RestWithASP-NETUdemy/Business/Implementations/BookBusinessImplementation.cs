@@ -1,43 +1,44 @@
 ﻿using RestWithASP_NETUdemy.Model;
 using RestWithASP_NETUdemy.Model.Context;
 using RestWithASP_NETUdemy.Repository;
+using RestWithASP_NETUdemy.Repository.Generic;
 
 namespace RestWithASP_NETUdemy.Business.Implementations;
 
 public class BookBusinessImplementation : IBookBusiness
 {
 
-    private readonly IBookRepository _bookRepository;
+    private readonly IRepository<Book> _repository;
 
-    public BookBusinessImplementation(IBookRepository bookRepository)
+    public BookBusinessImplementation(IRepository<Book> repository)
     {
-        _bookRepository = bookRepository;
+        _repository = repository;
     }
     
     
     public Book Create(Book t)
     {
-       return _bookRepository.Create(t);
+       return _repository.Create(t);
     }
 
     public List<Book> FindAll()
     {
-        return _bookRepository.FindAll();
+        return _repository.FindAll();
     }
 
     public Book FindById(long id)
     {
-        return _bookRepository.FindById(id);
+        return _repository.FindById(id);
 
     }
 
     public Book Update(Book t)
     {
-        return _bookRepository.Update(t);
+        return _repository.Update(t);
     }
 
     public void Delete(long id)
     {
-        _bookRepository.Delete(id);
+        _repository.Delete(id);
     }
 }

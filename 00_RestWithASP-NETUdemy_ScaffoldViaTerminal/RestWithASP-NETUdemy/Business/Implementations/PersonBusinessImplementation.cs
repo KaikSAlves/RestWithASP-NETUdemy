@@ -2,14 +2,15 @@
 using RestWithASP_NETUdemy.Model;
 using RestWithASP_NETUdemy.Model.Context;
 using RestWithASP_NETUdemy.Repository;
+using RestWithASP_NETUdemy.Repository.Generic;
 
 namespace RestWithASP_NETUdemy.Business.Implementations;
 
 public class PersonBusinessImplementation : IPersonBusiness
 {
-    private readonly IPersonRepository _repository;
+    private readonly IRepository<Person> _repository;
 
-    public PersonBusinessImplementation(IPersonRepository repository)
+    public PersonBusinessImplementation(IRepository<Person> repository)
     {
         _repository = repository;
     }

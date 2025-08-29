@@ -7,10 +7,8 @@ using RestWithASP_NETUdemy.Business.Implementations;
 
 using RestWithASP_NETUdemy.Model.Context;
 using RestWithASP_NETUdemy.Repository;
-using RestWithASP_NETUdemy.Repository.Implementations;
+using RestWithASP_NETUdemy.Repository.Generic;
 using Serilog;
-using BookRepositoryImplementation = RestWithASP_NETUdemy.Repository.Implementations.BookRepositoryImplementation;
-
 
 var builder = WebApplication.CreateBuilder(args);
 IWebHostEnvironment env = builder.Environment;
@@ -30,8 +28,7 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<IPersonBusiness, PersonBusinessImplementation>();
 builder.Services.AddScoped<IBookBusiness, BookBusinessImplementation>();
 
-builder.Services.AddScoped<IPersonRepository, PersonRepositoryImplementation>();
-builder.Services.AddScoped<IBookRepository, BookRepositoryImplementation>();
+builder.Services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
 
 var connection = builder.Configuration["MySQLConnection:MySQLConnectionString"];
 builder.Services.AddDbContext<MySqlContext>(options => options.UseMySql(connection,

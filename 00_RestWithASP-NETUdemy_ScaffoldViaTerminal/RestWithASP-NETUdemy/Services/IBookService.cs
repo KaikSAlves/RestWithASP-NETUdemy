@@ -1,9 +1,9 @@
 ﻿using RestWithASP_NETUdemy.Model;
 using RestWithASP_NETUdemy.Repository;
 
-namespace RestWithASP_NETUdemy.Business;
+namespace RestWithASP_NETUdemy.Services;
 
-public interface IBookBusiness
+public interface IBookService
 {
     Book Create(Book t);
     List<Book> FindAll();

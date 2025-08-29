@@ -3,14 +3,14 @@ using RestWithASP_NETUdemy.Model.Context;
 using RestWithASP_NETUdemy.Repository;
 using RestWithASP_NETUdemy.Repository.Generic;
 
-namespace RestWithASP_NETUdemy.Business.Implementations;
+namespace RestWithASP_NETUdemy.Services.Implementations;
 
-public class BookBusinessImplementation : IBookBusiness
+public class BookServiceImplementation : IBookService
 {
 
     private readonly IRepository<Book> _repository;
 
-    public BookBusinessImplementation(IRepository<Book> repository)
+    public BookServiceImplementation(IRepository<Book> repository)
     {
         _repository = repository;
     }

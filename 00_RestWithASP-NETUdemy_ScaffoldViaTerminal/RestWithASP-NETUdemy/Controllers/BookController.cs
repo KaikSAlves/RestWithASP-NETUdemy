@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RestWithASP_NETUdemy.Business;
+using RestWithASP_NETUdemy.Services;
 using RestWithASP_NETUdemy.Model;
 
 namespace RestWithASP_NETUdemy.Controllers;
@@ -9,23 +9,23 @@ namespace RestWithASP_NETUdemy.Controllers;
 [Route("api/[controller]/v{api:apiVersion}")]
 public class BookController : ControllerBase
 {
-    private readonly IBookBusiness _bookBusiness;
+    private readonly IBookService _bookService;
 
-    public BookController(IBookBusiness bookBusiness)
+    public BookController(IBookService bookService)
     {
-        _bookBusiness = bookBusiness;
+        _bookService = bookService;
     }
 
     [HttpGet]
     public IActionResult FindAll()
     {
-        return Ok(_bookBusiness.FindAll());
+        return Ok(_bookService.FindAll());
     }
 
     [HttpGet("{id}")]
     public IActionResult FindById(long id)
     {
-        var book = _bookBusiness.FindById(id);
+        var book = _bookService.FindById(id);
         if (book == null) return NotFound();
         return Ok(book);
     }
@@ -34,20 +34,20 @@ public class BookController : ControllerBase
     public IActionResult Create([FromBody] Book book)
     {
         if(book == null) return BadRequest();
-        return Ok(_bookBusiness.Create(book));
+        return Ok(_bookService.Create(book));
     }
     
     [HttpPut]
     public IActionResult Update([FromBody] Book book)
     {
         if(book == null) return BadRequest();
-        return Ok(_bookBusiness.Update(book));
+        return Ok(_bookService.Update(book));
     }
 
     [HttpDelete("{id}")]
     public IActionResult Delete(long id)
     {
-        _bookBusiness.Delete(id);
+        _bookService.Delete(id);
         return NoContent();
     }
 }

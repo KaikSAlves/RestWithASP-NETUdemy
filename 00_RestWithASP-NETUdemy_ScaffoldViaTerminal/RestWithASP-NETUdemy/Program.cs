@@ -1,13 +1,12 @@
 using EvolveDb;
 using Microsoft.EntityFrameworkCore;
 using MySqlConnector;
-using RestWithASP_NETUdemy.Business;
-
-using RestWithASP_NETUdemy.Business.Implementations;
 
 using RestWithASP_NETUdemy.Model.Context;
 using RestWithASP_NETUdemy.Repository;
 using RestWithASP_NETUdemy.Repository.Generic;
+using RestWithASP_NETUdemy.Services;
+using RestWithASP_NETUdemy.Services.Implementations;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,8 +24,8 @@ builder.Services.AddApiVersioning();
 builder.Services.AddControllers();
 
 //para injeção de dependência
-builder.Services.AddScoped<IPersonBusiness, PersonBusinessImplementation>();
-builder.Services.AddScoped<IBookBusiness, BookBusinessImplementation>();
+builder.Services.AddScoped<IPersonService, PersonServiceImplementation>();
+builder.Services.AddScoped<IBookService, BookServiceImplementation>();
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
 

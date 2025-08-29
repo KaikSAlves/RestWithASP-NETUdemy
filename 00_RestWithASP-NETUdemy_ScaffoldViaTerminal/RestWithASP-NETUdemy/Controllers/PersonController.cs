@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RestWithASP_NETUdemy.Business;
 using RestWithASP_NETUdemy.Model;
-using RestWithASP_NETUdemy.Services;
+using RestWithASP_NETUdemy.Business;
 
 namespace RestWithASP_NETUdemy.Controllers;
 
@@ -9,24 +10,24 @@ namespace RestWithASP_NETUdemy.Controllers;
 [Route("api/[controller]/v{version:apiVersion}")]
 public class PersonController : ControllerBase
 {
-    private IPersonService _personService;
+    private IPersonBusiness _personBusiness;
 
-    public PersonController(IPersonService personService)
+    public PersonController(IPersonBusiness personService)
     {
-        _personService = personService;
+        _personBusiness = personService;
     }
     
     //READ
     [HttpGet]
     public IActionResult FindAll()
     {
-        return Ok(_personService.FindAll());
+        return Ok(_personBusiness.FindAll());
     }
     
     [HttpGet("{id}")]
     public IActionResult FindById(long id)
     {
-        var person = _personService.FindById(id);
+        var person = _personBusiness.FindById(id);
         if (person == null) return NotFound();
         return Ok(person);
     }
@@ -35,20 +36,20 @@ public class PersonController : ControllerBase
     public IActionResult Create([FromBody] Person person)
     {
         if(person == null) return BadRequest();
-        return Ok(_personService.Create(person));
+        return Ok(_personBusiness.Create(person));
     }
     
     [HttpPut]
     public IActionResult Update([FromBody] Person person)
     {
         if(person == null) return BadRequest();
-        return Ok(_personService.Update(person));
+        return Ok(_personBusiness.Update(person));
     }
 
     [HttpDelete("{id}")]
     public IActionResult Delete(long id)
     {
-        _personService.Delete(id);
+        _personBusiness.Delete(id);
         return NoContent();
     }
 }

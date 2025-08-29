@@ -1,13 +1,14 @@
-﻿using RestWithASP_NETUdemy.Model;
+﻿using RestWithASP_NETUdemy.Business;
+using RestWithASP_NETUdemy.Model;
 using RestWithASP_NETUdemy.Model.Context;
 
-namespace RestWithASP_NETUdemy.Services.Implementations;
+namespace RestWithASP_NETUdemy.Repository.Implementations;
 
-public class PersonServiceImplementation : IPersonService
+public class PersonRepositoryImplementation : IPersonRepository
 {
     private MySqlContext _context;
 
-    public PersonServiceImplementation(MySqlContext context)
+    public PersonRepositoryImplementation(MySqlContext context)
     {
         _context = context;
     }
@@ -40,7 +41,6 @@ public class PersonServiceImplementation : IPersonService
         return _context.Persons.ToList();
     }
 
-    
     //update
     public Person Update(Person person)
     {
@@ -85,7 +85,7 @@ public class PersonServiceImplementation : IPersonService
         
     }
     
-    private bool Exists(long id)
+    public bool Exists(long id)
     {
         return _context.Persons.Any(p => p.Id.Equals(id));
     }

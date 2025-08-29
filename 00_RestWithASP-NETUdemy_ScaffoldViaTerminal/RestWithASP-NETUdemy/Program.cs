@@ -7,6 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
 builder.Services.AddCors();
 
+//versionamento de api
+builder.Services.AddApiVersioning();
+
 //para encontrar os controllers é necessário adicionar essa linha de cod
 builder.Services.AddControllers();
 //para injeção de dependência

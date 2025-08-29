@@ -102,3 +102,4 @@ C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaT
 C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\MySqlConnector.dll
 C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\Microsoft.AspNetCore.Mvc.Versioning.dll

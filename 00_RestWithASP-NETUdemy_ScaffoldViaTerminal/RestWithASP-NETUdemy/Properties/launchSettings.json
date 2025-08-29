@@ -19,8 +19,20 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "ITS Express" : {
-      "launchUrl": "calculator/sum/2/2"
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  },
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:8080",
+      "sslPort": 44310
     }
   }
 }

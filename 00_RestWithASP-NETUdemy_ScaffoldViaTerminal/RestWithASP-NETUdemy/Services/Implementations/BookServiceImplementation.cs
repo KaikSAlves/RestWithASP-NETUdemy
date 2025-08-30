@@ -1,4 +1,6 @@
-﻿using RestWithASP_NETUdemy.Model;
+﻿using RestWithASP_NETUdemy.Data.Converter.Implementations;
+using RestWithASP_NETUdemy.Data.VO;
+using RestWithASP_NETUdemy.Model;
 using RestWithASP_NETUdemy.Model.Context;
 using RestWithASP_NETUdemy.Repository;
 using RestWithASP_NETUdemy.Repository.Generic;
@@ -7,34 +9,35 @@ namespace RestWithASP_NETUdemy.Services.Implementations;
 
 public class BookServiceImplementation : IBookService
 {
-
     private readonly IRepository<Book> _repository;
+    private readonly BookConverter _converter;
 
     public BookServiceImplementation(IRepository<Book> repository)
     {
         _repository = repository;
-    }
-    
-    
-    public Book Create(Book t)
-    {
-       return _repository.Create(t);
+        _converter = new BookConverter();
     }
 
-    public List<Book> FindAll()
+    public BookVO Create(BookVO item)
     {
-        return _repository.FindAll();
+        var bookEntity = _converter.Parse(item);
+        return _converter.Parse(_repository.Create(bookEntity));
     }
 
-    public Book FindById(long id)
+    public List<BookVO> FindAll()
     {
-        return _repository.FindById(id);
-
+        return _converter.Parse(_repository.FindAll());
     }
 
-    public Book Update(Book t)
+    public BookVO FindById(long id)
     {
-        return _repository.Update(t);
+        return _converter.Parse(_repository.FindById(id));
+    }
+
+    public BookVO Update(BookVO item)
+    {
+        var bookEntity = _converter.Parse(item);
+        return _converter.Parse(_repository.Update(bookEntity));
     }
 
     public void Delete(long id)

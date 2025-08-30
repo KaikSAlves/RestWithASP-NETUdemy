@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RestWithASP_NETUdemy.Data.VO;
 using RestWithASP_NETUdemy.Services;
 using RestWithASP_NETUdemy.Model;
 
@@ -31,14 +32,14 @@ public class BookController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult Create([FromBody] Book book)
+    public IActionResult Create([FromBody] BookVO book)
     {
         if(book == null) return BadRequest();
         return Ok(_bookService.Create(book));
     }
     
     [HttpPut]
-    public IActionResult Update([FromBody] Book book)
+    public IActionResult Update([FromBody] BookVO book)
     {
         if(book == null) return BadRequest();
         return Ok(_bookService.Update(book));

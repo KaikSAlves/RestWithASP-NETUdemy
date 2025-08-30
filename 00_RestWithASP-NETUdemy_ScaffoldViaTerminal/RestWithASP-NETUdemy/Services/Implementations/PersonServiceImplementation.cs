@@ -1,4 +1,6 @@
 ﻿
+using RestWithASP_NETUdemy.Data.Converter.Implementations;
+using RestWithASP_NETUdemy.Data.VO;
 using RestWithASP_NETUdemy.Model;
 using RestWithASP_NETUdemy.Model.Context;
 using RestWithASP_NETUdemy.Repository;
@@ -9,35 +11,39 @@ namespace RestWithASP_NETUdemy.Services.Implementations;
 public class PersonServiceImplementation : IPersonService
 {
     private readonly IRepository<Person> _repository;
+    private readonly PersonConverter _converter;
 
     public PersonServiceImplementation(IRepository<Person> repository)
     {
         _repository = repository;
+        _converter = new PersonConverter();
     }
     
     //create
-    public Person Create(Person person)
+    public PersonVO Create(PersonVO person)
     {
-        return _repository.Create(person);
+        var personEntity = _converter.Parse(person);
+        return _converter.Parse(_repository.Create(personEntity));
     }
     
     //read
 
-    public Person FindById(long id)
+    public PersonVO FindById(long id)
     {
-        return _repository.FindById(id);
+        return _converter.Parse(_repository.FindById(id));
     }
     
-    public List<Person> FindAll()
+    public List<PersonVO> FindAll()
     {
-        return _repository.FindAll();
+        return _converter.Parse(_repository.FindAll());
     }
 
     
     //update
-    public Person Update(Person person)
+    public PersonVO Update(PersonVO person)
     {
-        return  _repository.Update(person);
+        var personEntity = _converter.Parse(person);
+        return  _converter.Parse(_repository.Update(personEntity));
     }
 
    

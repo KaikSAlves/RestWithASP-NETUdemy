@@ -14,21 +14,8 @@ public class Book : BaseEntity
     public DateTime LaunchDate { get; set; }
     
     [Column("price")]
-    public double price { get; set; }
+    public double Price { get; set; }
     
     [Column("title")]
     public string Title { get; set; }
-
-    public Book(long id, string author, DateTime launchDate, double price, string title)
-    {
-        Id = id;
-        Author = author;
-        LaunchDate = launchDate;
-        this.price = price;
-        Title = title;
-    }
-
-    public Book()
-    {
-    }
 }

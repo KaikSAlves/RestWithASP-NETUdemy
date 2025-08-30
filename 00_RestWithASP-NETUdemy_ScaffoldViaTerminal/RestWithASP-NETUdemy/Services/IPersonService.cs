@@ -1,12 +1,12 @@
-﻿using RestWithASP_NETUdemy.Model;
+﻿using RestWithASP_NETUdemy.Data.VO;
 
 namespace RestWithASP_NETUdemy.Services;
 
 public interface IPersonService
 {
-    Person Create(Person person);
-    Person FindById(long id);
-    Person Update(Person person);
+    PersonVO Create(PersonVO person);
+    PersonVO FindById(long id);
+    PersonVO Update(PersonVO person);
     void Delete(long id);
-    List<Person> FindAll();
+    List<PersonVO> FindAll();
 }

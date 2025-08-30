@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RestWithASP_NETUdemy.Data.VO;
 using RestWithASP_NETUdemy.Model;
 using RestWithASP_NETUdemy.Services;
 
@@ -32,14 +33,14 @@ public class PersonController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult Create([FromBody] Person person)
+    public IActionResult Create([FromBody] PersonVO person)
     {
         if(person == null) return BadRequest();
         return Ok(_personService.Create(person));
     }
     
     [HttpPut]
-    public IActionResult Update([FromBody] Person person)
+    public IActionResult Update([FromBody] PersonVO person)
     {
         if(person == null) return BadRequest();
         return Ok(_personService.Update(person));

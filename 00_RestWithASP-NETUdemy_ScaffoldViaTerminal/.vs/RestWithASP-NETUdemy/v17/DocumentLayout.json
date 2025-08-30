@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\kaiks\\Desktop\\RestWithASP-NETUdemy\\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{49F0CF66-4C2C-4A71-970A-E306B3128F20}|RestWithASP-NETUdemy\\RestWithASP-NETUdemy.csproj|c:\\users\\kaiks\\desktop\\restwithasp-netudemy\\00_restwithasp-netudemy_scaffoldviaterminal\\restwithasp-netudemy\\repository\\generic\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49F0CF66-4C2C-4A71-970A-E306B3128F20}|RestWithASP-NETUdemy\\RestWithASP-NETUdemy.csproj|solutionrelative:restwithasp-netudemy\\repository\\generic\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49F0CF66-4C2C-4A71-970A-E306B3128F20}|RestWithASP-NETUdemy\\RestWithASP-NETUdemy.csproj|c:\\users\\kaiks\\desktop\\restwithasp-netudemy\\00_restwithasp-netudemy_scaffoldviaterminal\\restwithasp-netudemy\\model\\context\\mysqlcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49F0CF66-4C2C-4A71-970A-E306B3128F20}|RestWithASP-NETUdemy\\RestWithASP-NETUdemy.csproj|solutionrelative:restwithasp-netudemy\\model\\context\\mysqlcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{49F0CF66-4C2C-4A71-970A-E306B3128F20}|RestWithASP-NETUdemy\\RestWithASP-NETUdemy.csproj|c:\\users\\kaiks\\desktop\\restwithasp-netudemy\\00_restwithasp-netudemy_scaffoldviaterminal\\restwithasp-netudemy\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{49F0CF66-4C2C-4A71-970A-E306B3128F20}|RestWithASP-NETUdemy\\RestWithASP-NETUdemy.csproj|solutionrelative:restwithasp-netudemy\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
@@ -31,6 +39,31 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "GenericRepository.cs",
+              "DocumentMoniker": "C:\\Users\\kaiks\\Desktop\\RestWithASP-NETUdemy\\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\\RestWithASP-NETUdemy\\Repository\\Generic\\GenericRepository.cs",
+              "RelativeDocumentMoniker": "RestWithASP-NETUdemy\\Repository\\Generic\\GenericRepository.cs",
+              "ToolTip": "C:\\Users\\kaiks\\Desktop\\RestWithASP-NETUdemy\\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\\RestWithASP-NETUdemy\\Repository\\Generic\\GenericRepository.cs",
+              "RelativeToolTip": "RestWithASP-NETUdemy\\Repository\\Generic\\GenericRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-30T14:43:37.363Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MySqlContext.cs",
+              "DocumentMoniker": "C:\\Users\\kaiks\\Desktop\\RestWithASP-NETUdemy\\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\\RestWithASP-NETUdemy\\Model\\Context\\MySqlContext.cs",
+              "RelativeDocumentMoniker": "RestWithASP-NETUdemy\\Model\\Context\\MySqlContext.cs",
+              "ToolTip": "C:\\Users\\kaiks\\Desktop\\RestWithASP-NETUdemy\\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\\RestWithASP-NETUdemy\\Model\\Context\\MySqlContext.cs",
+              "RelativeToolTip": "RestWithASP-NETUdemy\\Model\\Context\\MySqlContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-30T14:43:30.369Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "launchSettings.json",
               "DocumentMoniker": "C:\\Users\\kaiks\\Desktop\\RestWithASP-NETUdemy\\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\\RestWithASP-NETUdemy\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "RestWithASP-NETUdemy\\Properties\\launchSettings.json",
@@ -38,24 +71,22 @@
               "RelativeToolTip": "RestWithASP-NETUdemy\\Properties\\launchSettings.json",
               "ViewState": "AgIAAA8AAAAAAAAAAAAAACIAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-08-29T11:54:28.115Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-29T11:54:28.115Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "RestWithASP-NETUdemy",
               "DocumentMoniker": "C:\\Users\\kaiks\\Desktop\\RestWithASP-NETUdemy\\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\\RestWithASP-NETUdemy\\RestWithASP-NETUdemy.csproj",
               "RelativeDocumentMoniker": "RestWithASP-NETUdemy\\RestWithASP-NETUdemy.csproj",
               "ToolTip": "C:\\Users\\kaiks\\Desktop\\RestWithASP-NETUdemy\\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\\RestWithASP-NETUdemy\\RestWithASP-NETUdemy.csproj",
               "RelativeToolTip": "RestWithASP-NETUdemy\\RestWithASP-NETUdemy.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-08-29T11:54:25.204Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-29T11:54:25.204Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\kaiks\\Desktop\\RestWithASP-NETUdemy\\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\\RestWithASP-NETUdemy\\appsettings.json",
               "RelativeDocumentMoniker": "RestWithASP-NETUdemy\\appsettings.json",
@@ -63,12 +94,11 @@
               "RelativeToolTip": "RestWithASP-NETUdemy\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-08-29T11:54:19.605Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-29T11:54:19.605Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\kaiks\\Desktop\\RestWithASP-NETUdemy\\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\\RestWithASP-NETUdemy\\Program.cs",
               "RelativeDocumentMoniker": "RestWithASP-NETUdemy\\Program.cs",
@@ -76,8 +106,7 @@
               "RelativeToolTip": "RestWithASP-NETUdemy\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-29T11:54:00.501Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-29T11:54:00.501Z"
             }
           ]
         }

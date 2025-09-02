@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RestWithASP_NETUdemy.Data.VO;
+using RestWithASP_NETUdemy.Hypermedia.Filters;
 using RestWithASP_NETUdemy.Model;
 using RestWithASP_NETUdemy.Services;
 
@@ -19,12 +20,14 @@ public class PersonController : ControllerBase
     
     //READ
     [HttpGet]
+    [TypeFilter(typeof(HyperMediaFilter))]
     public IActionResult FindAll()
     {
         return Ok(_personService.FindAll());
     }
     
     [HttpGet("{id}")]
+    [TypeFilter(typeof(HyperMediaFilter))]
     public IActionResult FindById(long id)
     {
         var person = _personService.FindById(id);
@@ -33,6 +36,7 @@ public class PersonController : ControllerBase
     }
 
     [HttpPost]
+    [TypeFilter(typeof(HyperMediaFilter))]
     public IActionResult Create([FromBody] PersonVO person)
     {
         if(person == null) return BadRequest();
@@ -40,6 +44,7 @@ public class PersonController : ControllerBase
     }
     
     [HttpPut]
+    [TypeFilter(typeof(HyperMediaFilter))]
     public IActionResult Update([FromBody] PersonVO person)
     {
         if(person == null) return BadRequest();

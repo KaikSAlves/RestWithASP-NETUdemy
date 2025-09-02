@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RestWithASP_NETUdemy.Data.VO;
+using RestWithASP_NETUdemy.Hypermedia.Filters;
 using RestWithASP_NETUdemy.Services;
 using RestWithASP_NETUdemy.Model;
 
@@ -18,12 +19,14 @@ public class BookController : ControllerBase
     }
 
     [HttpGet]
+    [TypeFilter(typeof(HyperMediaFilter))]
     public IActionResult FindAll()
     {
         return Ok(_bookService.FindAll());
     }
 
     [HttpGet("{id}")]
+    [TypeFilter(typeof(HyperMediaFilter))]
     public IActionResult FindById(long id)
     {
         var book = _bookService.FindById(id);
@@ -32,6 +35,7 @@ public class BookController : ControllerBase
     }
 
     [HttpPost]
+    [TypeFilter(typeof(HyperMediaFilter))]
     public IActionResult Create([FromBody] BookVO book)
     {
         if(book == null) return BadRequest();
@@ -39,6 +43,7 @@ public class BookController : ControllerBase
     }
     
     [HttpPut]
+    [TypeFilter(typeof(HyperMediaFilter))]
     public IActionResult Update([FromBody] BookVO book)
     {
         if(book == null) return BadRequest();

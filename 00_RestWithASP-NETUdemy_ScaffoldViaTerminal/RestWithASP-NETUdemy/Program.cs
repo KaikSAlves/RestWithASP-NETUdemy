@@ -2,7 +2,8 @@ using EvolveDb;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Net.Http.Headers;
 using MySqlConnector;
-
+using RestWithASP_NETUdemy.Hypermedia.Enricher;
+using RestWithASP_NETUdemy.Hypermedia.Filters;
 using RestWithASP_NETUdemy.Model.Context;
 using RestWithASP_NETUdemy.Repository;
 using RestWithASP_NETUdemy.Repository.Generic;
@@ -39,6 +40,13 @@ builder.Services.AddMvc(options =>
 })
 .AddXmlSerializerFormatters();
 
+//filtros de HATEOS
+var filterOptions = new HyperMediaFilterOptions();
+filterOptions.ContentResponseEnricherList.Add(new PersonEnricher());
+filterOptions.ContentResponseEnricherList.Add(new BookEnricher());
+
+builder.Services.AddSingleton(filterOptions);   
+
 var connection = builder.Configuration["MySQLConnection:MySQLConnectionString"];
 builder.Services.AddDbContext<MySqlContext>(options => options.UseMySql(connection,
     new MySqlServerVersion(new Version(8,4,6))));
@@ -55,6 +63,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 //necessário tbm adicionar essa
 app.MapControllers();
+app.MapControllerRoute("DefaultApi", "{controller = values}/{id?}");
 
 app.Run();
 

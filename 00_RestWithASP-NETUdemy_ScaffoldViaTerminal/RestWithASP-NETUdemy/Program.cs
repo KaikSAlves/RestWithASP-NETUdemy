@@ -1,6 +1,8 @@
 using EvolveDb;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Net.Http.Headers;
+using Microsoft.OpenApi.Models;
 using MySqlConnector;
 using RestWithASP_NETUdemy.Hypermedia.Enricher;
 using RestWithASP_NETUdemy.Hypermedia.Filters;
@@ -21,6 +23,24 @@ builder.Services.AddCors();
 
 //versionamento de api
 builder.Services.AddApiVersioning();
+
+//swagger
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc(
+        "v1",
+        new OpenApiInfo()
+        {
+            Title = "REST API's From 0 to Amazon Azure with ASP .NET Core 5 and Docker",
+            Version = "v1",
+            Description = "API RESTful developed in course '\"REST API's From 0 to Amazon Azure with ASP .NET Core 5 and Docker\"'",
+            Contact = new OpenApiContact
+            {
+                Name = "Kaik Alves",
+                Url = new Uri("https://github.com/KaikSAlves")
+            }
+        });
+});
 
 //para encontrar os controllers é necessário adicionar essa linha de cod
 builder.Services.AddControllers();
@@ -64,6 +84,18 @@ app.UseHttpsRedirection();
 //necessário tbm adicionar essa
 app.MapControllers();
 app.MapControllerRoute("DefaultApi", "{controller = values}/{id?}");
+
+//swagger
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint
+        ("/swagger/v1/swagger.json", "REST API's From 0 to Amazon Azure with ASP .NET Core 5 and Docker - V1");
+});
+
+var options = new RewriteOptions();
+options.AddRedirect("^$", "swagger");
+app.UseRewriter(options);
 
 app.Run();
 

@@ -20,13 +20,22 @@ public class PersonController : ControllerBase
     
     //READ
     [HttpGet]
-    [TypeFilter(typeof(HyperMediaFilter))]
+    [ProducesResponseType((200), Type = typeof(List<PersonVO>))]
+    [ProducesResponseType(204)]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(401)]
+    [TypeFilter(typeof(HyperMediaFilter))] 
     public IActionResult FindAll()
     {
         return Ok(_personService.FindAll());
     }
     
+    
     [HttpGet("{id}")]
+    [ProducesResponseType((200), Type = typeof(PersonVO))]
+    [ProducesResponseType(204)]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(401)] 
     [TypeFilter(typeof(HyperMediaFilter))]
     public IActionResult FindById(long id)
     {
@@ -36,6 +45,9 @@ public class PersonController : ControllerBase
     }
 
     [HttpPost]
+    [ProducesResponseType((200), Type = typeof(PersonVO))]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(401)]
     [TypeFilter(typeof(HyperMediaFilter))]
     public IActionResult Create([FromBody] PersonVO person)
     {
@@ -44,6 +56,9 @@ public class PersonController : ControllerBase
     }
     
     [HttpPut]
+    [ProducesResponseType((200), Type = typeof(PersonVO))]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(401)]
     [TypeFilter(typeof(HyperMediaFilter))]
     public IActionResult Update([FromBody] PersonVO person)
     {
@@ -52,6 +67,9 @@ public class PersonController : ControllerBase
     }
 
     [HttpDelete("{id}")]
+    [ProducesResponseType(204)]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(401)]
     public IActionResult Delete(long id)
     {
         _personService.Delete(id);

@@ -114,3 +114,6 @@ C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaT
 C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\Serilog.Sinks.Console.dll
 C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\Serilog.Sinks.Debug.dll
 C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\Serilog.Sinks.File.dll
+C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll

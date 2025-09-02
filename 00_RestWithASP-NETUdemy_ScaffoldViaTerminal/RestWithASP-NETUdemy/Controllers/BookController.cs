@@ -19,6 +19,10 @@ public class BookController : ControllerBase
     }
 
     [HttpGet]
+    [ProducesResponseType((200), Type = typeof(List<PersonVO>))]
+    [ProducesResponseType(204)]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(401)]
     [TypeFilter(typeof(HyperMediaFilter))]
     public IActionResult FindAll()
     {
@@ -26,6 +30,10 @@ public class BookController : ControllerBase
     }
 
     [HttpGet("{id}")]
+    [ProducesResponseType((200), Type = typeof(PersonVO))]
+    [ProducesResponseType(204)]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(401)]
     [TypeFilter(typeof(HyperMediaFilter))]
     public IActionResult FindById(long id)
     {
@@ -35,6 +43,9 @@ public class BookController : ControllerBase
     }
 
     [HttpPost]
+    [ProducesResponseType((200), Type = typeof(PersonVO))]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(401)]
     [TypeFilter(typeof(HyperMediaFilter))]
     public IActionResult Create([FromBody] BookVO book)
     {
@@ -42,7 +53,11 @@ public class BookController : ControllerBase
         return Ok(_bookService.Create(book));
     }
     
+    
     [HttpPut]
+    [ProducesResponseType((200), Type = typeof(PersonVO))]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(401)]
     [TypeFilter(typeof(HyperMediaFilter))]
     public IActionResult Update([FromBody] BookVO book)
     {
@@ -51,6 +66,9 @@ public class BookController : ControllerBase
     }
 
     [HttpDelete("{id}")]
+    [ProducesResponseType(204)]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(401)]
     public IActionResult Delete(long id)
     {
         _bookService.Delete(id);

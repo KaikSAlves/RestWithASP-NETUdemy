@@ -60,6 +60,14 @@ builder.Services.AddMvc(options =>
 })
 .AddXmlSerializerFormatters();
 
+//Cors - Serviços
+builder.Services.AddCors(options => options.AddDefaultPolicy(builder =>
+{
+    builder.AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader();
+}));
+
 //filtros de HATEOS
 var filterOptions = new HyperMediaFilterOptions();
 filterOptions.ContentResponseEnricherList.Add(new PersonEnricher());
@@ -84,6 +92,9 @@ app.UseHttpsRedirection();
 //necessário tbm adicionar essa
 app.MapControllers();
 app.MapControllerRoute("DefaultApi", "{controller = values}/{id?}");
+
+//Cors - App
+app.UseCors();
 
 //swagger
 app.UseSwagger();

@@ -1,9 +1,15 @@
+using System.Text;
 using EvolveDb;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.Net.Http.Headers;
 using Microsoft.OpenApi.Models;
 using MySqlConnector;
+using RestWithASP_NETUdemy.Configurations;
 using RestWithASP_NETUdemy.Hypermedia.Enricher;
 using RestWithASP_NETUdemy.Hypermedia.Filters;
 using RestWithASP_NETUdemy.Model.Context;
@@ -17,7 +23,7 @@ var builder = WebApplication.CreateBuilder(args);
 IWebHostEnvironment env = builder.Environment;
 Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateLogger();
 
-                                            //services
+//services
 builder.Services.AddOpenApi();
 builder.Services.AddCors();
 
@@ -33,7 +39,8 @@ builder.Services.AddSwaggerGen(c =>
         {
             Title = "REST API's From 0 to Amazon Azure with ASP .NET Core 5 and Docker",
             Version = "v1",
-            Description = "API RESTful developed in course '\"REST API's From 0 to Amazon Azure with ASP .NET Core 5 and Docker\"'",
+            Description =
+                "API RESTful developed in course '\"REST API's From 0 to Amazon Azure with ASP .NET Core 5 and Docker\"'",
             Contact = new OpenApiContact
             {
                 Name = "Kaik Alves",
@@ -48,17 +55,51 @@ builder.Services.AddControllers();
 //para injeção de dependência
 builder.Services.AddScoped<IPersonService, PersonServiceImplementation>();
 builder.Services.AddScoped<IBookService, BookServiceImplementation>();
+builder.Services.AddScoped<ILoginService, LoginServiceImplementation>();
 
+builder.Services.AddTransient<ITokenService, TokenService>();
+
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
+
+//segurança
+var tokenConfiguration = new TokenConfiguration();
+//new ConfigureFromConfigurationOptions<TokenConfiguration>(Configuration) //TODO Ajustar para .NET 8
+//services.AddSingleton(tokenConfiguration);
+
+builder.Services.AddAuthentication(options =>
+    {
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    })
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = tokenConfiguration.Issuer,
+            ValidAudience = tokenConfiguration.Audience,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenConfiguration.Secret))
+        };
+    });
+
+builder.Services.AddAuthorization(auth =>
+{
+    auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
+        .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme).RequireAuthenticatedUser().Build());
+});
 
 //passar parametros para o header, podendo trocar o retorno entre xml e json
 builder.Services.AddMvc(options =>
-{
-    options.RespectBrowserAcceptHeader = true;
-    options.FormatterMappings.SetMediaTypeMappingForFormat("xml", MediaTypeHeaderValue.Parse("application/xml"));
-    options.FormatterMappings.SetMediaTypeMappingForFormat("json", MediaTypeHeaderValue.Parse("application/json"));
-})
-.AddXmlSerializerFormatters();
+    {
+        options.RespectBrowserAcceptHeader = true;
+        options.FormatterMappings.SetMediaTypeMappingForFormat("xml", MediaTypeHeaderValue.Parse("application/xml"));
+        options.FormatterMappings.SetMediaTypeMappingForFormat("json", MediaTypeHeaderValue.Parse("application/json"));
+    })
+    .AddXmlSerializerFormatters();
 
 //Cors - Serviços
 builder.Services.AddCors(options => options.AddDefaultPolicy(builder =>
@@ -73,11 +114,11 @@ var filterOptions = new HyperMediaFilterOptions();
 filterOptions.ContentResponseEnricherList.Add(new PersonEnricher());
 filterOptions.ContentResponseEnricherList.Add(new BookEnricher());
 
-builder.Services.AddSingleton(filterOptions);   
+builder.Services.AddSingleton(filterOptions);
 
 var connection = builder.Configuration["MySQLConnection:MySQLConnectionString"];
 builder.Services.AddDbContext<MySqlContext>(options => options.UseMySql(connection,
-    new MySqlServerVersion(new Version(8,4,6))));
+    new MySqlServerVersion(new Version(8, 4, 6))));
 
 var app = builder.Build();
 

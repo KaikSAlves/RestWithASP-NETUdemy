@@ -21,7 +21,7 @@ public class UserRepository : IUserRepository
         
         return _context.Users.FirstOrDefault(u => (u.UserName == user.UserName && u.Password == pass));
     }
-    
+
     public User RefreshUserInfo(User user)
     {
         if (!_context.Users.Any(u => u.Id == user.Id)) return null;

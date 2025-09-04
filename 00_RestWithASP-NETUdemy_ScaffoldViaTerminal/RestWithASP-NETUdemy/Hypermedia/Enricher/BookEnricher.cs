@@ -15,8 +15,7 @@ public class BookEnricher : ContentResponseEnricher<BookVO>
     {
         var path = "api/book/v1";
         string link = GetLink(content.Id, urlHelper, path);
-        
-        System.Console.WriteLine(link);
+
         content.Links.Add(new HyperMediaLink()
         {
             Action = HttpActionVerb.GET,

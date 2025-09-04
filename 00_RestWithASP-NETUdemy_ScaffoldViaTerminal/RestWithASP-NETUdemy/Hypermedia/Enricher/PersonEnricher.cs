@@ -14,7 +14,6 @@ public class PersonEnricher : ContentResponseEnricher<PersonVO>
         var path = "api/person/v1";
         string link = GetLink(content.Id, urlHelper, path);
         
-        System.Console.WriteLine(link);
         content.Links.Add(new HyperMediaLink()
         {
             Action = HttpActionVerb.GET,

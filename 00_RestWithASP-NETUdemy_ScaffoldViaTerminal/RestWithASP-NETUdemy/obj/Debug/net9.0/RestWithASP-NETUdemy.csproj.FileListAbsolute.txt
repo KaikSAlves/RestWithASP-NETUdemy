@@ -117,3 +117,11 @@ C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaT
 C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\kaiks\Desktop\RestWithASP-NETUdemy\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\RestWithASP-NETUdemy\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll

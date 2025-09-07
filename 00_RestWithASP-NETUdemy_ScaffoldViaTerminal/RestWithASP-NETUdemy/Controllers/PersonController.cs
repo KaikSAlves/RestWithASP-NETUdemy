@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RestWithASP_NETUdemy.Data.VO;
 using RestWithASP_NETUdemy.Hypermedia.Filters;
 using RestWithASP_NETUdemy.Model;
@@ -6,6 +7,7 @@ using RestWithASP_NETUdemy.Services;
 
 namespace RestWithASP_NETUdemy.Controllers;
 
+[Authorize("Bearer")]
 [ApiVersion("1")]
 [ApiController]
 [Route("api/[controller]/v{version:apiVersion}")]

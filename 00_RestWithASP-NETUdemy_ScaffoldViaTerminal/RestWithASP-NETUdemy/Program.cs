@@ -2,6 +2,7 @@ using System.Text;
 using EvolveDb;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -27,6 +28,71 @@ Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateLogger();
 builder.Services.AddOpenApi();
 builder.Services.AddCors();
 
+//security
+var tokenConfigurations = builder.Configuration
+    .GetSection("TokenConfigurations")
+    .Get<TokenConfiguration>();
+
+builder.Services.AddSingleton(tokenConfigurations);
+
+builder.Services.AddAuthentication(options =>
+    {
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    })
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = tokenConfigurations?.Issuer,
+            ValidAudience = tokenConfigurations?.Audience,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenConfigurations.Secret))
+        };
+    });
+
+builder.Services.AddAuthorization(auth =>
+{
+    auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
+        .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
+        .RequireAuthenticatedUser().Build());
+});
+
+//Cors - Serviços
+builder.Services.AddCors(options => options.AddDefaultPolicy(builder =>
+{
+    builder.AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader();
+}));
+
+//para encontrar os controllers é necessário adicionar essa linha de cod
+builder.Services.AddControllers();
+
+//connetion
+var connection = builder.Configuration["MySQLConnection:MySQLConnectionString"];
+builder.Services.AddDbContext<MySqlContext>(options => options.UseMySql(connection,
+    new MySqlServerVersion(new Version(8, 4, 6))));
+
+//passar parametros para o header, podendo trocar o retorno entre xml e json
+builder.Services.AddMvc(options =>
+    {
+        options.RespectBrowserAcceptHeader = true;
+        options.FormatterMappings.SetMediaTypeMappingForFormat("xml", MediaTypeHeaderValue.Parse("application/xml"));
+        options.FormatterMappings.SetMediaTypeMappingForFormat("json", MediaTypeHeaderValue.Parse("application/json"));
+    })
+    .AddXmlSerializerFormatters();
+
+//filtros de HATEOS
+var filterOptions = new HyperMediaFilterOptions();
+filterOptions.ContentResponseEnricherList.Add(new PersonEnricher());
+filterOptions.ContentResponseEnricherList.Add(new BookEnricher());
+
+builder.Services.AddSingleton(filterOptions);
+
 //versionamento de api
 builder.Services.AddApiVersioning();
 
@@ -49,8 +115,6 @@ builder.Services.AddSwaggerGen(c =>
         });
 });
 
-//para encontrar os controllers é necessário adicionar essa linha de cod
-builder.Services.AddControllers();
 
 //para injeção de dependência
 builder.Services.AddScoped<IPersonService, PersonServiceImplementation>();
@@ -62,63 +126,15 @@ builder.Services.AddTransient<ITokenService, TokenService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
 
-//segurança
-var tokenConfiguration = new TokenConfiguration();
-//new ConfigureFromConfigurationOptions<TokenConfiguration>(Configuration) //TODO Ajustar para .NET 8
-//services.AddSingleton(tokenConfiguration);
+//seguranca
 
-builder.Services.AddAuthentication(options =>
-    {
-        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-    })
-    .AddJwtBearer(options =>
-    {
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuer = true,
-            ValidateAudience = true,
-            ValidateLifetime = true,
-            ValidateIssuerSigningKey = true,
-            ValidIssuer = tokenConfiguration.Issuer,
-            ValidAudience = tokenConfiguration.Audience,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenConfiguration.Secret))
-        };
-    });
+/*
+var tokenConfigurations = new TokenConfiguration();
+new ConfigureFromConfigurationOptions<TokenConfiguration>(
+    builder.Configuration.GetSection("TokenConfigurations")
+);
 
-builder.Services.AddAuthorization(auth =>
-{
-    auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
-        .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme).RequireAuthenticatedUser().Build());
-});
-
-//passar parametros para o header, podendo trocar o retorno entre xml e json
-builder.Services.AddMvc(options =>
-    {
-        options.RespectBrowserAcceptHeader = true;
-        options.FormatterMappings.SetMediaTypeMappingForFormat("xml", MediaTypeHeaderValue.Parse("application/xml"));
-        options.FormatterMappings.SetMediaTypeMappingForFormat("json", MediaTypeHeaderValue.Parse("application/json"));
-    })
-    .AddXmlSerializerFormatters();
-
-//Cors - Serviços
-builder.Services.AddCors(options => options.AddDefaultPolicy(builder =>
-{
-    builder.AllowAnyOrigin()
-        .AllowAnyMethod()
-        .AllowAnyHeader();
-}));
-
-//filtros de HATEOS
-var filterOptions = new HyperMediaFilterOptions();
-filterOptions.ContentResponseEnricherList.Add(new PersonEnricher());
-filterOptions.ContentResponseEnricherList.Add(new BookEnricher());
-
-builder.Services.AddSingleton(filterOptions);
-
-var connection = builder.Configuration["MySQLConnection:MySQLConnectionString"];
-builder.Services.AddDbContext<MySqlContext>(options => options.UseMySql(connection,
-    new MySqlServerVersion(new Version(8, 4, 6))));
+*/
 
 var app = builder.Build();
 
@@ -130,12 +146,16 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+//Cors - App
+app.UseCors();
+app.UseAuthentication();
+app.UseAuthorization();
+
 //necessário tbm adicionar essa
 app.MapControllers();
 app.MapControllerRoute("DefaultApi", "{controller = values}/{id?}");
 
-//Cors - App
-app.UseCors();
 
 //swagger
 app.UseSwagger();

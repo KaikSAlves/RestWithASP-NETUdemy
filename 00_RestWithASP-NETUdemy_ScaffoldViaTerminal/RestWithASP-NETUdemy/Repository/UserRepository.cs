@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography;
+﻿using System.Runtime.Intrinsics.Arm;
+using System.Security.Cryptography;
 using System.Text;
 using RestWithASP_NETUdemy.Data.VO;
 using RestWithASP_NETUdemy.Model;
@@ -15,14 +16,25 @@ public class UserRepository : IUserRepository
         _context = context;
     }
 
-    public User ValidateCredentials(UserVO user)
+    public User? ValidateCredentials(UserVO user)
     {
-        var pass = ComputeHash(user.Password, new SHA256CryptoServiceProvider());
+        string pass = ComputeHash(user.Password, SHA256.Create());
         
-        return _context.Users.FirstOrDefault(u => (u.UserName == user.UserName && u.Password == pass));
+        //parte de teste
+        /*
+        var passLeandro = _context.Users.First().Password;
+        Console.WriteLine(passLeandro);
+        Console.WriteLine("Senha leandro: " + passLeandro.Replace("-", ""));
+        Console.WriteLine("Senha descriptografada: " + pass);
+        Console.WriteLine("Sao iguais? " + (passLeandro.Replace("-", "").Equals(pass)));
+        
+        */
+        
+        return _context.Users.FirstOrDefault(u => 
+            (u.UserName == user.UserName && u.Password.Replace("-", "").Equals(pass)));
     }
 
-    public User RefreshUserInfo(User user)
+    public User? RefreshUserInfo(User user)
     {
         if (!_context.Users.Any(u => u.Id == user.Id)) return null;
 
@@ -44,10 +56,17 @@ public class UserRepository : IUserRepository
         return result;
     }
 
-    private object ComputeHash(string password, SHA256CryptoServiceProvider algorithm)
+    private string ComputeHash(string password, HashAlgorithm hashAlgorithm)
     {
-        Byte[] inputBytes = Encoding.UTF8.GetBytes(password);
-        Byte[] hashedBytes = algorithm.ComputeHash(inputBytes);
-        return BitConverter.ToString(hashedBytes);
+        byte[] inputBytes = Encoding.UTF8.GetBytes(password);
+        byte[] hashedBytes = hashAlgorithm.ComputeHash(inputBytes);
+        
+        var sBuilder = new StringBuilder();
+        foreach (var item in hashedBytes)
+        {
+            sBuilder.Append(item.ToString("x2"));
+        }
+        
+        return sBuilder.ToString().ToUpper();
     }
 }

@@ -5,6 +5,6 @@ namespace RestWithASP_NETUdemy.Repository;
 
 public interface IUserRepository
 {
-    User ValidateCredentials(UserVO user);
-    User RefreshUserInfo(User user);
+    User? ValidateCredentials(UserVO user);
+    User? RefreshUserInfo(User user);
 }

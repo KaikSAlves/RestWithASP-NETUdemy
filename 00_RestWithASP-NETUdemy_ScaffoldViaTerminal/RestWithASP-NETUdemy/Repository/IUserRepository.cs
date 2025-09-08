@@ -7,4 +7,7 @@ public interface IUserRepository
 {
     User? ValidateCredentials(UserVO user);
     User? RefreshUserInfo(User user);
+
+    bool RevokeToken(string username);
+    User? ValidateCredentials(string username);
 }

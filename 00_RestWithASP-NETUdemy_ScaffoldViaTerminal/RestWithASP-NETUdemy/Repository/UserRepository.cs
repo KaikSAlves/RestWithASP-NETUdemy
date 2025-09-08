@@ -56,6 +56,21 @@ public class UserRepository : IUserRepository
         return result;
     }
 
+    public bool RevokeToken(string username)
+    {
+        var user = _context.Users.SingleOrDefault(u => (u.UserName.Equals(username)));
+        if (user == null) return false;
+
+        user.RefreshToken = null;
+        _context.SaveChanges();
+        return true;
+    }
+
+    public User? ValidateCredentials(string username)
+    {
+        return _context.Users.SingleOrDefault(u => (u.UserName.Equals(username)));
+    }
+
     private string ComputeHash(string password, HashAlgorithm hashAlgorithm)
     {
         byte[] inputBytes = Encoding.UTF8.GetBytes(password);

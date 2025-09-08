@@ -10,10 +10,10 @@ namespace RestWithASP_NETUdemy.Services.Implementations;
 
 public class PersonServiceImplementation : IPersonService
 {
-    private readonly IRepository<Person> _repository;
+    private readonly IPersonRepository _repository;
     private readonly PersonConverter _converter;
 
-    public PersonServiceImplementation(IRepository<Person> repository)
+    public PersonServiceImplementation(IPersonRepository repository)
     {
         _repository = repository;
         _converter = new PersonConverter();
@@ -38,7 +38,13 @@ public class PersonServiceImplementation : IPersonService
         return _converter.Parse(_repository.FindAll());
     }
 
-    
+    public PersonVO Disable(long id)
+    {
+        var personEntity = _repository.Disable(id);
+        return _converter.Parse(personEntity);
+    }
+
+
     //update
     public PersonVO Update(PersonVO person)
     {

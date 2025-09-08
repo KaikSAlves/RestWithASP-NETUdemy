@@ -20,6 +20,8 @@ using RestWithASP_NETUdemy.Services;
 using RestWithASP_NETUdemy.Services.Implementations;
 using Serilog;
 
+
+
 var builder = WebApplication.CreateBuilder(args);
 IWebHostEnvironment env = builder.Environment;
 Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateLogger();
@@ -124,6 +126,7 @@ builder.Services.AddScoped<ILoginService, LoginServiceImplementation>();
 builder.Services.AddTransient<ITokenService, TokenService>();
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IPersonRepository, PersonRepository>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
 
 //seguranca

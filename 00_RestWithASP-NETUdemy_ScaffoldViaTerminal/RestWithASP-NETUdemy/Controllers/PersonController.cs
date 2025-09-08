@@ -33,6 +33,7 @@ public class PersonController : ControllerBase
     }
     
     
+    [Authorize("Bearer")]
     [HttpGet("{id}")]
     [ProducesResponseType((200), Type = typeof(PersonVO))]
     [ProducesResponseType(204)]
@@ -76,5 +77,15 @@ public class PersonController : ControllerBase
     {
         _personService.Delete(id);
         return NoContent();
+    }
+    
+    [HttpPatch("{id}")]
+    [ProducesResponseType((200), Type = typeof(List<PersonVO>))]
+    [ProducesResponseType(204)]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(401)]
+    public IActionResult Disable(long id)
+    {
+        return Ok(_personService.Disable(id));
     }
 }

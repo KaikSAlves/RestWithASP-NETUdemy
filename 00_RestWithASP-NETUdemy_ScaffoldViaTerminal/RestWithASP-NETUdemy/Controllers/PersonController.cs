@@ -104,4 +104,17 @@ public class PersonController : ControllerBase
         
         return NoContent();
     }
+    
+    [HttpGet("findPersonByName")]
+    [ProducesResponseType((200), Type = typeof(PersonVO))]
+    [ProducesResponseType(204)]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(401)] 
+    [TypeFilter(typeof(HyperMediaFilter))]
+    public IActionResult FindByName([FromQuery] string? firstName, [FromQuery] string? lastName)
+    {
+        var persons = _personService.FindByName(firstName, lastName);
+        if (persons == null) return NotFound();
+        return Ok(persons);
+    }
 }

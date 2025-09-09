@@ -13,4 +13,6 @@ public interface IPersonService
     PersonVO Disable(long id);
     
     PersonVO Enable(long id);
+    
+    List<PersonVO> FindByName(string firstName, string lastName);
 }

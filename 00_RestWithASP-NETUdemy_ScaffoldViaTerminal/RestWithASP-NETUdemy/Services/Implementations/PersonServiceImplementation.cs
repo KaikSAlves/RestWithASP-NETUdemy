@@ -32,6 +32,11 @@ public class PersonServiceImplementation : IPersonService
     {
         return _converter.Parse(_repository.FindById(id));
     }
+
+    public List<PersonVO> FindByName(string firstName, string lastName)
+    {
+        return _converter.Parse(_repository.FindByName(firstName, lastName));
+    }
     
     public List<PersonVO> FindAll()
     {

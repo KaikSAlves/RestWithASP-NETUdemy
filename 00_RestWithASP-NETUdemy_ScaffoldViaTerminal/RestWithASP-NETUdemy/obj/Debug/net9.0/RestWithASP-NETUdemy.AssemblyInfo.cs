@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RestWithASP-NETUdemy")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+85d72ffab1282dfbd6b5a37e1fbd8356424cd9d3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5ec74c5e9896ee5b577146495fda9f4d8319a519")]
 [assembly: System.Reflection.AssemblyProductAttribute("RestWithASP-NETUdemy")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RestWithASP-NETUdemy")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

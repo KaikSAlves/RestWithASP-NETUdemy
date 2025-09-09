@@ -34,4 +34,27 @@ public class PersonRepository : GenericRepository<Person>, IPersonRepository
         return user;
     }
 
+    public Person Enable(long id)
+    {
+        if (!_context.Persons.Any(p => p.Id.Equals(id))) return null;
+
+        var user = _context.Persons.FirstOrDefault(p => p.Id.Equals(id));
+
+        if (user != null)
+        {
+            user.Enable = true;
+
+            try
+            {
+                _context.Entry(user).CurrentValues.SetValues(user);
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
+
+        return user;
+    }
 }

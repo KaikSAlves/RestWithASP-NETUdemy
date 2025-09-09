@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using RestWithASP_NETUdemy.Model;
 using RestWithASP_NETUdemy.Model.Base;
 using RestWithASP_NETUdemy.Model.Context;
 
@@ -8,7 +9,7 @@ public class GenericRepository<T> : IRepository<T> where T : BaseEntity
 {
     protected MySqlContext _context;
     
-    private DbSet<T> dataset;
+    protected private DbSet<T> dataset;
 
     public GenericRepository(MySqlContext context)
     {

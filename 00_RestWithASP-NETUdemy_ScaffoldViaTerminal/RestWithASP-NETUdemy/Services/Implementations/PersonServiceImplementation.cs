@@ -43,6 +43,12 @@ public class PersonServiceImplementation : IPersonService
         var personEntity = _repository.Disable(id);
         return _converter.Parse(personEntity);
     }
+    
+    public PersonVO Enable(long id)
+    {
+        var personEntity = _repository.Enable(id);
+        return _converter.Parse(personEntity);
+    }
 
 
     //update

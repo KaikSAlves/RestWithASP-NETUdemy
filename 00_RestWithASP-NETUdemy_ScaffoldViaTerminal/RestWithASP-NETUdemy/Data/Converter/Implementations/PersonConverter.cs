@@ -16,7 +16,8 @@ public class PersonConverter : IParse<PersonVO, Person>, IParse<Person, PersonVO
             FirstName = origin.FirstName,
             LastName = origin.LastName,
             Address = origin.Address,
-            Gender = origin.Gender   
+            Gender = origin.Gender,
+            Enable = origin.Enable
         };
     }
 
@@ -31,7 +32,8 @@ public class PersonConverter : IParse<PersonVO, Person>, IParse<Person, PersonVO
             FirstName = origin.FirstName,
             LastName = origin.LastName,
             Address = origin.Address,
-            Gender = origin.Gender   
+            Gender = origin.Gender,   
+            Enable   = origin.Enable
         };
     }
 

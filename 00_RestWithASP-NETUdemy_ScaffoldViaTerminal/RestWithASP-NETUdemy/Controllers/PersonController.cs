@@ -32,8 +32,6 @@ public class PersonController : ControllerBase
         return Ok(_personService.FindAll());
     }
     
-    
-    [Authorize("Bearer")]
     [HttpGet("{id}")]
     [ProducesResponseType((200), Type = typeof(PersonVO))]
     [ProducesResponseType(204)]
@@ -79,13 +77,31 @@ public class PersonController : ControllerBase
         return NoContent();
     }
     
-    [HttpPatch("{id}")]
+    [HttpPatch("disable/{id}")]
     [ProducesResponseType((200), Type = typeof(List<PersonVO>))]
     [ProducesResponseType(204)]
     [ProducesResponseType(400)]
     [ProducesResponseType(401)]
     public IActionResult Disable(long id)
     {
-        return Ok(_personService.Disable(id));
+        var person = _personService.Disable(id);
+        
+        if (person == null) return NotFound("User not found");
+        
+        return NoContent();
+    }
+    
+    [HttpPatch("enable/{id}")]
+    [ProducesResponseType((200), Type = typeof(List<PersonVO>))]
+    [ProducesResponseType(204)]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(401)]
+    public IActionResult Enable(long id)
+    {
+        var person = _personService.Enable(id);
+        
+        if (person == null) return NotFound("User not found");
+        
+        return NoContent();
     }
 }

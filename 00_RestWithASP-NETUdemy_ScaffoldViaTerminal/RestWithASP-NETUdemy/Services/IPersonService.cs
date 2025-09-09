@@ -11,4 +11,6 @@ public interface IPersonService
     List<PersonVO> FindAll();
 
     PersonVO Disable(long id);
+    
+    PersonVO Enable(long id);
 }

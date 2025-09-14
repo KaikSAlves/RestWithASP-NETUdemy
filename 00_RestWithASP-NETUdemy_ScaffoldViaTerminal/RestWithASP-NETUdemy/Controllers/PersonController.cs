@@ -21,13 +21,24 @@ public class PersonController : ControllerBase
     }
     
     //READ
-    [HttpGet]
+    [HttpGet("{sortDirection}/{pageSize}/{page}")]
     [ProducesResponseType((200), Type = typeof(List<PersonVO>))]
     [ProducesResponseType(204)]
     [ProducesResponseType(400)]
     [ProducesResponseType(401)]
     [TypeFilter(typeof(HyperMediaFilter))] 
-    public IActionResult FindAll()
+    public IActionResult FindAll([FromQuery] string name, string sortDirection, int pageSize, int page)
+    {
+        return Ok(_personService.FindWithPagedSearch(name, sortDirection, pageSize, page));
+    }
+
+    [HttpGet]
+    [ProducesResponseType((200), Type = typeof(List<PersonVO>))]
+    [ProducesResponseType(204)]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(401)]
+    [TypeFilter(typeof(HyperMediaFilter))]
+    public IActionResult FindWithPagedSearch()
     {
         return Ok(_personService.FindAll());
     }

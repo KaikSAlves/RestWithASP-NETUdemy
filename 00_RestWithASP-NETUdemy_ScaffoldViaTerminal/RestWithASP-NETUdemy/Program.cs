@@ -180,7 +180,7 @@ void MigrateDatabase(string connection)
     try
     {
         var evolveConnection = new MySqlConnection(connection);
-        var evolve = new Evolve(evolveConnection, Log.Information)
+        var evolve = new Evolve(evolveConnection, Log.Information)  
         {
             Locations = new List<string> { "db/migrations", "db/dataset" },
             IsEraseDisabled = true

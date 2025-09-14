@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Diagnostics;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Routing;
 using RestWithASP_NETUdemy.Hypermedia.Abstract;
+using RestWithASP_NETUdemy.Hypermedia.utils;
 
 namespace RestWithASP_NETUdemy.Hypermedia;
 
@@ -16,7 +17,7 @@ public abstract class ContentResponseEnricher<T> : IResponseEnricher where T : I
     }
     public bool CanEnrich(Type contextType)
     {
-        return contextType == typeof(T) || contextType == typeof(List<T>);
+        return contextType == typeof(T) || contextType == typeof(List<T>) ||  contextType == typeof(PagedSearchVO<T>);;
     }
 
     protected abstract Task EnrichModel(T content, IUrlHelper urlHelper);
@@ -44,6 +45,10 @@ public abstract class ContentResponseEnricher<T> : IResponseEnricher where T : I
             {
                 ConcurrentBag<T> bag = new ConcurrentBag<T>(collection);
                 Parallel.ForEach(bag, (element) => { EnrichModel(element, urlHelper); });
+            }
+            else if (okObjectResult.Value is PagedSearchVO<T> pagedSearch)
+            {
+                Parallel.ForEach(pagedSearch.List.ToList(), (element) => { EnrichModel(element, urlHelper); });
             }
         }
 

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Net.Http.Headers;
@@ -119,9 +120,13 @@ builder.Services.AddSwaggerGen(c =>
 
 
 //para injeção de dependência
+
+builder.Services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
 builder.Services.AddScoped<IPersonService, PersonServiceImplementation>();
 builder.Services.AddScoped<IBookService, BookServiceImplementation>();
 builder.Services.AddScoped<ILoginService, LoginServiceImplementation>();
+builder.Services.AddScoped<IFileService, FileServiceImplementation>();
 
 builder.Services.AddTransient<ITokenService, TokenService>();
 
@@ -180,7 +185,7 @@ void MigrateDatabase(string connection)
     try
     {
         var evolveConnection = new MySqlConnection(connection);
-        var evolve = new Evolve(evolveConnection, Log.Information)  
+        var evolve = new Evolve(evolveConnection, Log.Information)
         {
             Locations = new List<string> { "db/migrations", "db/dataset" },
             IsEraseDisabled = true

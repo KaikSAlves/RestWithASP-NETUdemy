@@ -26,8 +26,9 @@ public class PersonController : ControllerBase
     [ProducesResponseType(204)]
     [ProducesResponseType(400)]
     [ProducesResponseType(401)]
-    [TypeFilter(typeof(HyperMediaFilter))] 
-    public IActionResult FindAll([FromQuery] string name, string sortDirection, int pageSize, int page)
+    [TypeFilter(typeof(HyperMediaFilter))]
+    [Produces("application/json")]
+    public IActionResult FindWithPagedSearch([FromQuery] string? name, string sortDirection, int pageSize, int page)
     {
         return Ok(_personService.FindWithPagedSearch(name, sortDirection, pageSize, page));
     }
@@ -38,7 +39,7 @@ public class PersonController : ControllerBase
     [ProducesResponseType(400)]
     [ProducesResponseType(401)]
     [TypeFilter(typeof(HyperMediaFilter))]
-    public IActionResult FindWithPagedSearch()
+    public IActionResult findAll()
     {
         return Ok(_personService.FindAll());
     }

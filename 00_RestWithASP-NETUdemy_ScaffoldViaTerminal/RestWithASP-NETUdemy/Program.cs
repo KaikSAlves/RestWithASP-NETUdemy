@@ -126,7 +126,6 @@ builder.Services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped<IPersonService, PersonServiceImplementation>();
 builder.Services.AddScoped<IBookService, BookServiceImplementation>();
 builder.Services.AddScoped<ILoginService, LoginServiceImplementation>();
-builder.Services.AddScoped<IFileService, FileServiceImplementation>();
 
 builder.Services.AddTransient<ITokenService, TokenService>();
 

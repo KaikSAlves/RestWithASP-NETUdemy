@@ -53,7 +53,7 @@ public class PersonServiceImplementation : IPersonService
 
         string query = @"SELECT * FROM person p where 1 = 1";
         if (!string.IsNullOrWhiteSpace(name)) query += $" AND p.first_name like '%{name}%' ";
-        query += $" ORDER BY p.first_name {sort} limit {size} offset{offset}";
+        query += $" ORDER BY p.first_name {sort} limit {size} offset {offset}";
 
         string countQuery = @"SELECT count(*) FROM person p where 1 = 1";
         if (!string.IsNullOrWhiteSpace(name)) countQuery += $" AND p.first_name like '%{name}%' ";

@@ -143,13 +143,20 @@ new ConfigureFromConfigurationOptions<TokenConfiguration>(
 
 */
 
+
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(5081);
+});
+
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 
-    MigrateDatabase(connection);
+    //MigrateDatabase(connection);
 }
 
 app.UseHttpsRedirection();

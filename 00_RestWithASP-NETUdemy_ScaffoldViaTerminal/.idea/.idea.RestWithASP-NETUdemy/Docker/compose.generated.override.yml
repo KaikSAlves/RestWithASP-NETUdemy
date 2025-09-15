@@ -1,0 +1,21 @@
+# This is a generated file. Not intended for manual editing.
+services:
+  rest-with-asp-net-udemy:
+    build:
+      context: "C:\\Users\\kaiks\\Desktop\\RestWithASP-NETUdemy\\00_RestWithASP-NETUdemy_ScaffoldViaTerminal"
+      dockerfile: "RestWithASP-NETUdemy/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net9.0/RestWithASP-NETUdemy.dll"
+    environment:
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "rest_with_asp_net_udemy:dev"
+    ports: []
+    volumes:
+    - "C:\\Users\\kaiks\\Desktop\\RestWithASP-NETUdemy\\00_RestWithASP-NETUdemy_ScaffoldViaTerminal\\\
+      RestWithASP-NETUdemy:/app:rw"
+    - "C:\\Users\\kaiks\\Desktop\\RestWithASP-NETUdemy\\00_RestWithASP-NETUdemy_ScaffoldViaTerminal:/src:rw"
+    - "C:\\Users\\kaiks\\.nuget\\packages:/home/app/.nuget/packages"
+    working_dir: "/app"
